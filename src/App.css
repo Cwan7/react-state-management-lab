@@ -1,3 +1,6 @@
+body {
+  background-color: rgb(179, 178, 178);
+}
 #root {
   margin: 16px;
 }
@@ -13,4 +16,12 @@ li {
   padding: 8px;
   border: whitesmoke 3px solid;
   border-radius: 8px;
+  background-color: white;
+}
+button {
+  background-color: rgb(38, 38, 38);
+  color: white;
+  padding: 3px 20px;
+  border-radius: 4px;
+  border: none;
 }
