@@ -1,5 +1,7 @@
 import { useState } from 'react';
-import ZombieFighter from './components/Zombies/Zombies.jsx';
+import FighterCard from './components/Zombies/Zombies.jsx';
+import TeamCard from './components/TeamCard/TeamCard.jsx';
+import TeamIndex from './components/TeamIndex/TeamIndex.jsx';
 import './App.css';
 
 const App = () => {
@@ -123,20 +125,19 @@ const handleRemoveFighter = (fighter) => {
   return (
     <div>
       <div>
-        <h1>{team.length > 0 ? 'Your Team!' : 'Add Fighter'}</h1>
-        <h2>Bank: ${money}</h2>
-        <h2>Teams Total Strength: {totalStrength}</h2>
-        <h2>Teams Total Agility: {totalAgility}</h2>
+        <TeamIndex 
+        team={team} 
+        money={money} 
+        strength={totalStrength} 
+        agility={totalAgility}
+        />
         <ul>
           {team.map((fighter) => (
-            <li key={fighter.id}>
-              <img src={fighter.img} />
-              <p>Name: {fighter.name} </p>
-              <p>Cost: ${fighter.price} </p>
-              <p>Strength: {fighter.strength}</p>
-              <p>Agility: {fighter.agility}</p>
-              <button onClick={() => handleRemoveFighter(fighter)}>Remove</button>
-            </li>
+            <TeamCard 
+            key={fighter.id}
+            fighter={fighter}
+            handleRemoveFighter={handleRemoveFighter}
+            />
           ))}
         </ul>
       </div>
@@ -144,14 +145,11 @@ const handleRemoveFighter = (fighter) => {
         <h1>Zombie Fighters!</h1>
         <ul>
           {zombieFighters.map((fighter) => (
-            <li key={fighter.id}>
-              <img src={fighter.img} />
-              <p>Name: {fighter.name} </p>
-              <p>Cost: ${fighter.price} </p>
-              <p>Strength: {fighter.strength}</p>
-              <p>Agility: {fighter.agility}</p>
-              <button onClick={() => handleAddFighter(fighter)}>Add</button>
-            </li>
+            <FighterCard 
+            key={fighter.id} 
+            fighter={fighter} 
+            handleAddFighter={handleAddFighter}
+            />
           ))}
         </ul>
       </div>
